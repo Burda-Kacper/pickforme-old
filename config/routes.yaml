@@ -1,10 +1,21 @@
 homepage:
   path: /
   controller: App\Controller\HomepageController::homepage
+  methods: GET
 
 login:
-  path: /login
+  path: /administrator/login
   controller: App\Controller\LoginController::login
 logout:
-  path: /logout
+  path: /administrator/logout
   controller: App\Controller\LoginController::logout
+
+pick_random:
+  path: /pick_random
+  controller: App\Controller\HomepageController::pickRandom
+  methods: POST
+
+pick_choose:
+  path: /pick_choose
+  controller: App\Controller\HomepageController::pickChoose
+  methods: POST

@@ -1,5 +1,38 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    Homepage screen placeholder
+    <div class="homepage-wrapper">
+        <div class="homepage-container">
+            <div class="homepage-base">
+                <h1 class="homepage-header anim-slide-in-up">pickforme</h1>
+                <p class="homepage-intro anim-slide-in-up anim-delay-04">{{ 'homepage.intro'|trans|raw }}</p>
+                <div class="homepage-button-container anim-slide-in-up anim-delay-08">
+                    <div>
+                        <p class="homepage-button-hint">{{ 'homepage.button.hint.choose'|trans|raw }}</p>
+                        <button class="homepage-button homepage-button-choose">{{ 'homepage.button.choose'|trans|raw }}</button>
+                    </div>
+                    <div>
+                        <p class="homepage-button-hint">{{ 'homepage.button.hint.random'|trans|raw }}</p>
+                        <button class="homepage-button homepage-button-random">{{ 'homepage.button.random'|trans|raw }}</button>
+                    </div>
+                </div>
+            </div>
+            <div class="homepage-content hidden">
+
+            </div>
+        </div>
+    </div>
+    <div class="homepage-cache-random-images">
+        
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const randomPath = "{{ path('pick_random') }}";
+        const choosePath = "{{ path('pick_choose') }}";
+    </script>
+    <script src="{{ asset('js/spa.js') }}"></script>
+    <script src="{{ asset('js/random.js') }}"></script>
+    <script src="{{ asset('js/choose.js') }}"></script>
 {% endblock %}

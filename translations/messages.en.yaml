@@ -1,0 +1,12 @@
+homepage:
+  intro: "Not too sure who you would like to play? Looking for a new main?<br />The reason is not important, we will help you find the right champion<br /><span>in League of Legends</span>"
+  button:
+    choose: "Choose a champion"
+    random: "Random champion"
+    hint:
+      choose: "I want to influence the choice"
+      random: "I want a random champion"
+random:
+  button:
+    skip: "Skip animation"
+    back: "Go back"
