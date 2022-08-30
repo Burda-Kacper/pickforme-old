@@ -33,8 +33,6 @@ $(".homepage-button-random").on('click', function () {
                 loadedImages++;
 
                 if (randomConfig.initialTiles === loadedImages) {
-                    cacheRandomImages();
-
                     setTimeout(function () {
                         $(".homepage-content").removeClass("hidden");
                     }, 1000);
@@ -114,13 +112,3 @@ $(".homepage-container").on('click', '.random-button-back', function () {
     initRandomConfig();
     backToHomepage();
 });
-
-function cacheRandomImages() {
-    if ($('.homepage-cache-random-images').hasClass("active")) {
-        console.log("cached");
-        return;
-    }
-
-    console.log("missed");
-    $('.homepage-cache-random-images').addClass("active");
-}
