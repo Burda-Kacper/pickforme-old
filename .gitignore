@@ -10,3 +10,8 @@
 .idea
 migrations
 node_modules
+
+/public/img/champion/*
+!/public/img/champion/.gitkeep
+/public/img/championSquare/*
+!/public/img/championSquare/.gitkeep
