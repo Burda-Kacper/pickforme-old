@@ -5,14 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>
         {% block title %}{% endblock %}
-        | 
+        |
     </title>
     <link rel="stylesheet" href="{{ asset('css/main.css') }}"/>
     <script src="https://kit.fontawesome.com/32d265316c.js" crossorigin="anonymous"></script>
 </head>
 <body>
 {% block body %}{% endblock %}
+{{ include('component/popup.html.twig') }}
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="{{ asset('js/popup.js') }}"></script>
 {% block javascripts %}{% endblock %}
 </body>
 </html>

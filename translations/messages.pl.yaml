@@ -10,3 +10,66 @@ random:
   button:
     skip: "Pomiń animację"
     back: "Powrót"
+administrator:
+  champions:
+    search: "Wyszukaj po nazwie"
+    not-found: "Champion nie został znaleziony. Spróbuj ponownie później."
+    back: "Powrót do listy"
+    roles: "Role"
+    save: "Zapisz zmiany"
+    error: "Wystąpił błąd"
+    saved: "Zapisano"
+    success: "Dane championa zostały zapisane"
+tags:
+  toughness:
+    name: "Wytrzymałość"
+    squishy: "Niska"
+    average: "Średnia"
+    tanky: "Duża"
+  powerspike:
+    name: "Najlepsza faza gry"
+    early: "Wczesna"
+    midgame: "Środkowa"
+    late: "Późna"
+  damagesource:
+    name: "Sposób zadawania obrażeń"
+    attacks: "Ataki"
+    mixed: "Mieszany"
+    spells: "Zaklęcia"
+  sustain:
+    name: "Sustain"
+    low: "Niski"
+    average: "Średni"
+    high: "Wysoki"
+  mobility:
+    name: "Mobilność"
+    low: "Niska"
+    average: "Średnia"
+    high: "Wysoka"
+  difficulty:
+    name: "Trudność"
+    easy: "Łatwa"
+    average: "Średnia"
+    hard: "Trudna"
+  crowdcontrol:
+    name: "Ilość efektów kontroli tłumu"
+    low: "Niska"
+    average: "Średnia"
+    high: "Wysoka"
+  support:
+    name: "Umiejętność wspierania sojuszników"
+    low: "Samolub"
+    average: "Pomiędzy"
+    high: "Wspierający"
+  damageamount:
+    name: "Ilość obrażeń"
+    low: "Niska"
+    average: "Średnia"
+    high: "Wysoka"
+  role:
+    name: "Role"
+    top: "Górna aleja"
+    jgl: "Dżungla"
+    mid: "Środkowa aleja"
+    bot: "Dolna aleja"
+    sup: "Wsparcie"

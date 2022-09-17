@@ -1,0 +1,34 @@
+<button class="administrator-champions-details-back"><i
+            class="fa-solid fa-chevron-left"></i> {{ 'administrator.champions.back'|trans|raw }}</button>
+
+<div class="administrator-champions-details-inner-container"
+     data-champion-id="{{ champion.id }}">
+    <img class="administrator-champions-details-image"
+         src="{{ asset('img/champion/' ~ champion.codename ~ ".jpg") }}"
+         alt="{{ champion.codename }}"
+         draggable="false"/>
+    <div class="administrator-champions-details-content">
+        <div class="administrator-champions-details-name">
+            {{ champion.name }}
+            <button class="administrator-champions-details-save">{{ 'administrator.champions.save'|trans|raw }}</button>
+        </div>
+        {% for tagGroup in tagGroups %}
+            <p class="administrator-champions-details-tags-label">{{ ('tags.' ~ tagGroup.name ~ ".name")|trans|raw }}</p>
+            <div class="administrator-champions-details-flex-container">
+                {% for tag in tagGroup.tags %}
+                    <div class="administrator-champions-details-tags-row {% if tag.id in championTags %}active{% endif %} {% if tagGroup.isRole %}role-row{% endif %}"
+                         data-tag-id="{{ tag.id }}">
+                        {% if tagGroup.isRole %}
+                            <img class="administrator-champions-details-tags-image"
+                                 src="{{ asset('img/role/' ~ tag.name ~ ".png") }}"
+                                 alt="{{ tag.name }}"
+                                 draggable="false"/>
+                        {% else %}
+                            {{ ('tags.' ~ tagGroup.name ~ "." ~ tag.name)|trans|raw }}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+</div>

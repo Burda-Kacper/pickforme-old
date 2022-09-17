@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <div class="administrator-wrapper">
+        <div class="administrator-container">
+            <p class="administrator-header">pickforme administrator - {% block administratorHeader %}{% endblock %}</p>
+            {% block administratorBody %}{% endblock %}
+        </div>
+    </div>
+{% endblock %}
+
+{% block javascripts %}
+    <script>
+        const administratorChampionsDetailsPath = "{{ path('administrator_champions_details') }}"
+        const administratorChampionsDetailsSavePath = "{{ path('administrator_champions_details_save') }}"
+
+        const translations = {
+            "administrator.champions.not-found": "{{ 'administrator.champions.not-found'|trans|raw }}",
+            'administrator.champions.error': "{{ 'administrator.champions.error'|trans|raw }}",
+            'administrator.champions.saved': "{{ 'administrator.champions.saved'|trans|raw }}",
+            'administrator.champions.success': "{{ 'administrator.champions.success'|trans|raw }}"
+        };
+    </script>
+    <script src="{{ asset('js/administrator/champions.js') }}"></script>
+{% endblock %}

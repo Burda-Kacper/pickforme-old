@@ -4,6 +4,7 @@ namespace App\Command;
 
 use App\Entity\Champion;
 use App\Repository\ChampionRepository;
+use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -24,13 +25,24 @@ class RegisterChampionsCommand extends Command
     private ChampionRepository $championRepository;
 
     /**
+     * @var TagRepository $tagRepository
+     */
+    private TagRepository $tagRepository;
+
+    /**
      * @param EntityManagerInterface $em
      * @param ChampionRepository $championRepository
+     * @param TagRepository $tagRepository
      */
-    public function __construct(EntityManagerInterface $em, ChampionRepository $championRepository)
+    public function __construct(
+        EntityManagerInterface $em,
+        ChampionRepository     $championRepository,
+        TagRepository          $tagRepository
+    )
     {
         $this->em = $em;
         $this->championRepository = $championRepository;
+        $this->tagRepository = $tagRepository;
 
         parent::__construct();
     }
@@ -53,7 +65,10 @@ class RegisterChampionsCommand extends Command
             $this->fetchChampionSquareImage($championImageName);
             $this->saveChampion([
                 'championName' => $championName,
-                'championImageName' => $championImageName
+                'championImageName' => $championImageName,
+                'resource' => $this->convertResource($champion->partype),
+                'tags' => [],
+                'attackRange' => $champion->stats->attackrange
             ]);
         }
 
@@ -73,6 +88,7 @@ class RegisterChampionsCommand extends Command
 
         if (file_exists($championLoadingImageSrc)) {
             echo "\n[SKIPPING] Already had loading image for: " . $championImageName;
+
             return;
         }
 
@@ -92,6 +108,7 @@ class RegisterChampionsCommand extends Command
 
         if (file_exists($championSquareImageSrc)) {
             echo "\n[SKIPPING] Already had square image for: " . $championImageName;
+
             return;
         }
 
@@ -120,6 +137,31 @@ class RegisterChampionsCommand extends Command
 
         $championEntity->setName($championData['championName']);
         $championEntity->setCodename($championData['championImageName']);
+        $championEntity->setResource($championData['resource']);
+        $championEntity->setAttackRange($championData['attackRange']);
+
+        foreach ($championData['tags'] as $tag) {
+            $championEntity->addTag($tag);
+        }
+
         $this->em->persist($championEntity);
+    }
+
+    /**
+     * @param string $resource
+     *
+     * @return string
+     */
+    private function convertResource(string $resource): string
+    {
+        if ($resource === "Mana") {
+            return "Mana";
+        }
+
+        if ($resource === "Energy") {
+            return "Energy";
+        }
+
+        return "Other";
     }
 }

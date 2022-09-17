@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\ChampionRepository;
+use App\Repository\TagGroupRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ORM\Entity(repositoryClass: ChampionRepository::class)]
-class Champion
+#[ORM\Entity(repositoryClass: TagGroupRepository::class)]
+class TagGroup
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
@@ -18,17 +18,14 @@ class Champion
     #[ORM\Column(type: 'string', length: 255)]
     private $name;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $codename;
-
-    #[ORM\ManyToMany(targetEntity: Tag::class, inversedBy: 'champions')]
+    #[ORM\OneToMany(mappedBy: 'tagGroup', targetEntity: Tag::class, orphanRemoval: true)]
     private $tags;
 
-    #[ORM\Column(type: 'string', length: 255)]
-    private $resource;
-
     #[ORM\Column(type: 'integer')]
-    private $attackRange;
+    private $position;
+
+    #[ORM\Column(type: 'boolean')]
+    private $isRole;
 
     public function __construct()
     {
@@ -52,18 +49,6 @@ class Champion
         return $this;
     }
 
-    public function getCodename(): ?string
-    {
-        return $this->codename;
-    }
-
-    public function setCodename(string $codename): self
-    {
-        $this->codename = $codename;
-
-        return $this;
-    }
-
     /**
      * @return Collection<int, Tag>
      */
@@ -76,6 +61,7 @@ class Champion
     {
         if (!$this->tags->contains($tag)) {
             $this->tags[] = $tag;
+            $tag->setTagGroup($this);
         }
 
         return $this;
@@ -83,31 +69,36 @@ class Champion
 
     public function removeTag(Tag $tag): self
     {
-        $this->tags->removeElement($tag);
+        if ($this->tags->removeElement($tag)) {
+            // set the owning side to null (unless already changed)
+            if ($tag->getTagGroup() === $this) {
+                $tag->setTagGroup(null);
+            }
+        }
 
         return $this;
     }
 
-    public function getResource(): ?string
+    public function getPosition(): ?int
     {
-        return $this->resource;
+        return $this->position;
     }
 
-    public function setResource(string $resource): self
+    public function setPosition(int $position): self
     {
-        $this->resource = $resource;
+        $this->position = $position;
 
         return $this;
     }
 
-    public function getAttackRange(): ?int
+    public function getIsRole(): ?bool
     {
-        return $this->attackRange;
+        return $this->isRole;
     }
 
-    public function setAttackRange(int $attackRange): self
+    public function setIsRole(bool $isRole): self
     {
-        $this->attackRange = $attackRange;
+        $this->isRole = $isRole;
 
         return $this;
     }

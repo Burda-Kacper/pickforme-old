@@ -10,3 +10,65 @@ random:
   button:
     skip: "Skip animation"
     back: "Go back"
+administrator:
+  champions:
+    search: "Search by name"
+    not-found: "Champion not found. Try again later."
+    back: "Back to list"
+    save: "Save changes"
+    error: "An error occured"
+    saved: "Saved"
+    success: "Succesfully saved champion data"
+tags:
+  toughness:
+    name: "Toughness"
+    squishy: "Squishy"
+    average: "Average"
+    tanky: "Tanky"
+  powerspike:
+    name: "Powerspike"
+    early: "Early game"
+    midgame: "Mid game"
+    late: "Late game"
+  damagesource:
+    name: "Damage source"
+    attacks: "Attacks"
+    mixed: "Mixed"
+    spells: "Spells"
+  sustain:
+    name: "Sustain"
+    low: "Low"
+    average: "Average"
+    high: "High"
+  mobility:
+    name: "Mobility"
+    low: "Low"
+    average: "Average"
+    high: "High"
+  difficulty:
+    name: "Difficulty"
+    easy: "Easy"
+    average: "Average"
+    hard: "Hard"
+  crowdcontrol:
+    name: "Crowd control amount"
+    low: "Low"
+    average: "Average"
+    high: "High"
+  support:
+    name: "Supportive capabilities"
+    low: "Selfish"
+    average: "In between"
+    high: "Supportive"
+  damageamount:
+    name: "Damage amount"
+    low: "Low"
+    average: "Average"
+    high: "High"
+  role:
+    name: "Roles"
+    top: "Top"
+    jgl: "Jungle"
+    mid: "Mid"
+    bot: "Bot"
+    sup: "Support"

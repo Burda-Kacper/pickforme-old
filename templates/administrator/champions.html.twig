@@ -1,0 +1,27 @@
+{% extends 'administrator/base.html.twig' %}
+
+{% block administratorHeader %}
+    champions
+{% endblock %}
+
+{% block administratorBody %}
+    <div class="administrator-champion-search-container">
+        <label for="administrator-champion-search"
+               class="administrator-champion-search-label">{{ 'administrator.champions.search'|trans|raw }}</label>
+        <input id="administrator-champion-search" type="text" class="administrator-champion-search"/>
+    </div>
+    <div class="administrator-champions-container">
+        {% for champion in champions %}
+            <div class="administrator-champion-row" data-champion-name="{{ champion.name }}"
+                 data-champion-id="{{ champion.id }}">
+                <img class="administrator-champion-image"
+                     src="{{ asset('img/championSquare/' ~ champion.codename ~ ".jpg") }}"
+                     alt="{{ champion.codename }}"
+                     draggable="false"/>
+                <p class="administrator-champion-name">{{ champion.name }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="administrator-champions-details-container hidden">
+    </div>
+{% endblock %}

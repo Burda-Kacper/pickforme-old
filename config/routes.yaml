@@ -10,6 +10,21 @@ logout:
   path: /administrator/logout
   controller: App\Controller\LoginController::logout
 
+administrator_champions:
+  path: /administrator/champions
+  controller: App\Controller\AdministratorController::champions
+  methods: GET
+administrator_champions_details_save:
+  path: /administrator/champions/save
+  controller: App\Controller\AdministratorController::championsDetailsSave
+  methods: POST
+administrator_champions_details:
+  path: /administrator/champions/{championId}
+  controller: App\Controller\AdministratorController::championsDetails
+  methods: POST
+  defaults:
+    championId: 0
+
 pick_random:
   path: /pick_random
   controller: App\Controller\HomepageController::pickRandom
