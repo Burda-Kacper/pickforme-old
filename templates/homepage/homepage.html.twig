@@ -6,14 +6,24 @@
             <div class="homepage-base">
                 <h1 class="homepage-header anim-slide-in-up">pickforme</h1>
                 <p class="homepage-intro anim-slide-in-up anim-delay-04">{{ 'homepage.intro'|trans|raw }}</p>
-                <div class="homepage-button-container anim-slide-in-up anim-delay-08">
-                    <div>
-                        <p class="homepage-button-hint">{{ 'homepage.button.hint.choose'|trans|raw }}</p>
-                        <button class="homepage-button homepage-button-choose">{{ 'homepage.button.choose'|trans|raw }}</button>
-                    </div>
-                    <div>
-                        <p class="homepage-button-hint">{{ 'homepage.button.hint.random'|trans|raw }}</p>
-                        <button class="homepage-button homepage-button-random">{{ 'homepage.button.random'|trans|raw }}</button>
+                <div class="homepage-button-wrapper anim-slide-in-up anim-delay-08">
+                    <p class="homepage-choose">{{ 'homepage.choose'|trans|raw }}</p>
+                    <div class="homepage-button-container">
+                        <div>
+                            <p class="homepage-button-hint">{{ 'homepage.button.hint.choose'|trans|raw }}</p>
+                            <button class="homepage-button homepage-button-choose"><i
+                                        class="fa-regular fa-circle-question"></i></button>
+                        </div>
+                        <div>
+                            <p class="homepage-button-hint">{{ 'homepage.button.hint.battle'|trans|raw }}</p>
+                            <button class="homepage-button homepage-button-battle"><i
+                                        class="fa-solid fa-bolt-lightning"></i></button>
+                        </div>
+                        <div>
+                            <p class="homepage-button-hint">{{ 'homepage.button.hint.random'|trans|raw }}</p>
+                            <button class="homepage-button homepage-button-random"><i class="fa-solid fa-dice"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -23,7 +33,7 @@
         </div>
     </div>
     <div class="homepage-cache-random-images">
-        
+
     </div>
 {% endblock %}
 
@@ -31,8 +41,10 @@
     <script>
         const randomPath = "{{ path('pick_random') }}";
         const choosePath = "{{ path('pick_choose') }}";
+        const battlePath = "{{ path('pick_battle') }}";
     </script>
     <script src="{{ asset('js/spa.js') }}"></script>
     <script src="{{ asset('js/random.js') }}"></script>
     <script src="{{ asset('js/choose.js') }}"></script>
+    <script src="{{ asset('js/battle.js') }}"></script>
 {% endblock %}

@@ -29,8 +29,11 @@ pick_random:
   path: /pick_random
   controller: App\Controller\HomepageController::pickRandom
   methods: POST
-
 pick_choose:
   path: /pick_choose
   controller: App\Controller\HomepageController::pickChoose
+  methods: POST
+pick_battle:
+  path: /pick_battle
+  controller: App\Controller\HomepageController::pickBattle
   methods: POST

@@ -16,7 +16,7 @@ $(".homepage-button-random").on('click', function () {
         return;
     }
 
-    $(this).data('blocked', "true");
+    $(".homepage-button").data('blocked', 'true');
     slideOutHomepage();
 
     $.ajax({

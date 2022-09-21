@@ -47,6 +47,24 @@ class HomepageController extends AbstractController
     }
 
     /**
+     * @return JsonResponse
+     */
+    public function pickBattle(): JsonResponse
+    {
+        $champions = $this->championService->getAllChampions();
+        shuffle($champions);
+        shuffle($champions);
+        shuffle($champions);
+
+        return new JsonResponse([
+            'success' => true,
+            'view' => $this->renderView('homepage/_battle.html.twig', [
+                'champions' => array_slice($champions, 0, 32)
+            ])
+        ]);
+    }
+
+    /**
      * @param Request $request
      *
      * @return JsonResponse

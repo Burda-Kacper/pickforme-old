@@ -34,14 +34,22 @@
   }
 }
 
+.homepage-choose {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  color: $gold;
+}
+
 .homepage-button-container {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
 
   > div {
-    width: 300px;
-    margin-left: 25px;
+    width: calc(100% / 3);
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,25 +61,42 @@
 }
 
 .homepage-button-hint {
+  width: 200px;
+  height: 42px;
   font-weight: 300;
   color: #ddd;
   margin-bottom: 15px;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .homepage-button {
-  width: 265px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   color: #fff;
   border: 2px solid $gold;
   background-color: transparent;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 18px;
   font-weight: 600;
   transition: background-color 0.2s, color 0.2s;
+
+  i {
+    font-size: 40px;
+    color: $gold;
+    transition: background-color 0.2s, color 0.2s;
+  }
 
   &:hover {
     background-color: $gold;
     color: $background;
+
+    i {
+      color: #fff;
+    }
   }
 }

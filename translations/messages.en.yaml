@@ -1,15 +1,21 @@
 homepage:
   intro: "Not too sure who you would like to play? Looking for a new main?<br />The reason is not important, we will help you find the right champion<br /><span>in League of Legends</span>"
   button:
-    choose: "Choose a champion"
-    random: "Random champion"
     hint:
-      choose: "I want to influence the choice"
-      random: "I want a random champion"
+      choose: "I want to be asked a few questions that will help pickforme... pick for me"
+      battle: "I want to get some suggestions, then discard champions I don't really like"
+      random: "I don't care. I want pickforme to get me a totally random champion"
+  choose: "Pick a method:"
 random:
   button:
     skip: "Skip animation"
     back: "Go back"
+battle:
+  hint: "Would you rather play one of:"
+  hint-final: "Remove one champion. We randomly remove another."
+  hint-last: "Let us make choice here :)"
+  or: "or"
+  finish: "Head back"
 administrator:
   champions:
     search: "Search by name"

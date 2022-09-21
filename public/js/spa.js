@@ -4,7 +4,7 @@ function backToHomepage() {
     setTimeout(function () {
         $('.homepage-content').addClass("hidden").html("");
         $(".homepage-base").removeClass("anim-slide-out-left").removeClass('hidden').addClass("anim-slide-in-left");
-        $(".homepage-button-random").data('blocked', null);
+        $(".homepage-button").data('blocked', null);
     }, 1000);
 }
 

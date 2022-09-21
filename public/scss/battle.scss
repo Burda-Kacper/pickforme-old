@@ -1,0 +1,292 @@
+.battle-container {
+  width: 700px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.battle-arena {
+  width: 302px;
+  height: 152px;
+  border: 1px solid $gold;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+
+  &:hover {
+    .battle-background {
+      opacity: 0.3;
+    }
+  }
+}
+
+.battle-champion {
+  width: calc(100% / 4);
+  height: calc(100% / 2);
+}
+
+.battle-final-container {
+  width: 482px;
+  height: 242px;
+  border: 1px solid $gold;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+  margin: 0 auto;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.battle-champion-final {
+  transition: opacity 0.2s, filter 0.2s;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.6;
+  }
+
+  &.blocked,
+  &.battle-champion-out {
+    cursor: initial;
+
+    &:hover {
+      opacity: initial;
+    }
+  }
+}
+
+.battle-last-container {
+  width: 302px;
+  height: 152px;
+  border: 1px solid $gold;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+  margin: 0 auto;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+
+  .battle-champion {
+    width: calc(100% / 2);
+    height: calc(100%);
+  }
+
+}
+
+.battle-tada {
+  width: 320px;
+  border: 1px solid $gold;
+  position: relative;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.battle-tada-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.battle-tada-name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 0;
+  color: $gold;
+  text-transform: uppercase;
+}
+
+.battle-tada-back {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  padding-left: 20px;
+  transform: translate(0, -50%);
+}
+
+.battle-button-back {
+  width: 225px;
+  border: 1px solid $gold;
+  padding: 5px 0;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  i {
+    margin-right: 15px;
+  }
+}
+
+.battle-tada-img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.battle-last-cursor {
+  position: absolute;
+  top: 125px;
+  left: 50px;
+
+  &.reversed {
+    transform: translate(150px, 0);
+  }
+
+  i {
+    font-size: 80px;
+  }
+}
+
+.battle-champion-out {
+  filter: grayscale(1);
+  opacity: 0.2 !important;
+}
+
+@keyframes battle-final-container {
+  0% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.battle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.battle-hint {
+  font-size: 20px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.battle-or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px;
+}
+
+.battle-background {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $gold;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.battle-in {
+  animation-name: battle-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes battle-in {
+  0% {
+    transform: scale(1);
+  }
+
+  100% {
+    transform: scale(1.12);
+  }
+}
+
+.battle-out {
+  animation-name: battle-out;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s;
+}
+
+@keyframes battle-out {
+  0% {
+    transform: scale(1) translate(0, 0);
+    filter: grayscale(0);
+  }
+
+  20% {
+    transform: scale(0.98) translate(5px, 0);
+  }
+
+  40% {
+    transform: scale(0.96) translate(-5px, 0);
+  }
+
+  60% {
+    transform: scale(0.94) translate(5px, 0);
+  }
+
+  80% {
+    transform: scale(0.92) translate(-5px, 0);
+  }
+
+  100% {
+    transform: scale(0.9) translate(0, 0);
+    filter: grayscale(1);
+  }
+}
+
+.battle-fade {
+  animation-name: battle-fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes battle-fade {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  75% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+
+.battle-fade-in {
+  animation-name: battle-fade-in;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes battle-fade-in {
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+
+  75% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

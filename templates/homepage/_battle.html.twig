@@ -1,0 +1,48 @@
+<div class="battle-wrapper">
+    <p class="battle-hint">{{ 'battle.hint'|trans|raw }}</p>
+    <p class="battle-hint battle-hint-final hidden">{{ 'battle.hint-final'|trans|raw }}</p>
+    <p class="battle-hint battle-hint-last hidden">{{ 'battle.hint-last'|trans|raw }}</p>
+    <div class="battle-container">
+        <div class="battle-champions hidden">
+            {% for champion in champions %}
+                <div class="battle-champion" data-result="{{ asset('img/champion/' ~ champion.codename ~ ".jpg") }}"
+                     data-name="{{ champion.name }}">
+                    <img class="battle-image" src="{{ asset('img/championSquare/' ~ champion.codename ~ ".jpg") }}"
+                         alt="{{ champion.codename }}"
+                         draggable="false"/>
+                </div>
+            {% endfor %}
+        </div>
+        <div class="battle-left battle-arena">
+            <div class="battle-background"></div>
+        </div>
+        <div class="battle-or">{{ 'battle.or'|trans|raw }}</div>
+        <div class="battle-right battle-arena">
+            <div class="battle-background"></div>
+        </div>
+    </div>
+    <div class="battle-final-container hidden">
+
+    </div>
+    <div class="battle-last-container hidden">
+        <div class="battle-last-cursor hidden">
+            <i class="fa-regular fa-hand-pointer"></i>
+        </div>
+    </div>
+    <div class="battle-tada hidden">
+        <img class="battle-tada-img" src="#"/>
+        <div class="battle-tada-overlay">
+            <p class="battle-tada-name"></p>
+        </div>
+        <div class="battle-tada-back">
+            <button class="battle-button-back">
+                <i class="fa-solid fa-flag-checkered"></i>
+                {{ 'battle.finish'|trans|raw }}
+            </button>
+        </div>
+    </div>
+
+    <script>
+        initBattleConfig();
+    </script>
+</div>

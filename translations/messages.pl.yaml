@@ -1,15 +1,21 @@
 homepage:
   intro: "Nie za bardzo wiesz, kim chciałbyś zagrać? Szukasz nowego maina?<br />Nie jest ważny powód, pomożemy Ci znaleźć odpowiedniego championa<br /><span>w League of Legends</span>"
   button:
-    choose: "Wybierz championa"
-    random: "Wylosuj championa"
     hint:
-      choose: "Chcę mieć wpływ na wybór"
-      random: "Chcę zupełnie losowego championa"
+      choose: "Chcę otrzymać parę pytań, które pomogą pickforme wybrać dla mnie championa"
+      battle: "Chcę otrzymać propozycje, z których wykluczę championy nieprzemawiające do mnie"
+      random: "Chcę aby pickforme wylosowało dla mnie zupełnie dowolnego championa"
+  choose: "Dokonaj wyboru:"
 random:
   button:
     skip: "Pomiń animację"
     back: "Powrót"
+battle:
+  hint: "Championem z której grupy wolałbyś zagrać?"
+  hint-final: "Pozbądź się championa. My losowo wyrzucimy kolejnego."
+  hint-last: "Czas na podjęcie decyzji :)"
+  or: "lub"
+  finish: "Powrót"
 administrator:
   champions:
     search: "Wyszukaj po nazwie"

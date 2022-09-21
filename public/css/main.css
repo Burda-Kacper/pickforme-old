@@ -119,13 +119,20 @@
     font-size: 26px;
     font-weight: 500; }
 
+.homepage-choose {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 24px;
+  font-weight: 600;
+  color: #F59E0B; }
+
 .homepage-button-container {
   display: flex;
   align-items: center;
-  justify-content: center; }
+  justify-content: space-around; }
   .homepage-button-container > div {
-    width: 300px;
-    margin-left: 25px;
+    width: calc(100% / 3);
+    padding: 0 10px;
     display: flex;
     flex-direction: column;
     align-items: center; }
@@ -133,24 +140,37 @@
       margin-left: 0; }
 
 .homepage-button-hint {
+  width: 200px;
+  height: 42px;
   font-weight: 300;
   color: #ddd;
-  margin-bottom: 15px; }
+  margin-bottom: 15px;
+  line-height: 14px;
+  font-size: 12px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
 
 .homepage-button {
-  width: 265px;
-  height: 60px;
+  width: 80px;
+  height: 80px;
   color: #fff;
   border: 2px solid #F59E0B;
   background-color: transparent;
   cursor: pointer;
   text-transform: uppercase;
-  font-size: 18px;
   font-weight: 600;
   transition: background-color 0.2s, color 0.2s; }
+  .homepage-button i {
+    font-size: 40px;
+    color: #F59E0B;
+    transition: background-color 0.2s, color 0.2s; }
   .homepage-button:hover {
     background-color: #F59E0B;
     color: #1E293B; }
+    .homepage-button:hover i {
+      color: #fff; }
 
 .random-container {
   width: 852px;
@@ -291,6 +311,226 @@
   .random-button:hover {
     background-color: #F59E0B;
     color: #1E293B; }
+
+.battle-container {
+  width: 700px;
+  display: flex;
+  justify-content: space-between; }
+
+.battle-arena {
+  width: 302px;
+  height: 152px;
+  border: 1px solid #F59E0B;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000; }
+  .battle-arena:hover .battle-background {
+    opacity: 0.3; }
+
+.battle-champion {
+  width: calc(100% / 4);
+  height: calc(100% / 2); }
+
+.battle-final-container {
+  width: 482px;
+  height: 242px;
+  border: 1px solid #F59E0B;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+  margin: 0 auto;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+.battle-champion-final {
+  transition: opacity 0.2s, filter 0.2s;
+  cursor: pointer; }
+  .battle-champion-final:hover {
+    opacity: 0.6; }
+  .battle-champion-final.blocked, .battle-champion-final.battle-champion-out {
+    cursor: initial; }
+    .battle-champion-final.blocked:hover, .battle-champion-final.battle-champion-out:hover {
+      opacity: initial; }
+
+.battle-last-container {
+  width: 302px;
+  height: 152px;
+  border: 1px solid #F59E0B;
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #000;
+  margin: 0 auto;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+  .battle-last-container .battle-champion {
+    width: calc(100% / 2);
+    height: calc(100%); }
+
+.battle-tada {
+  width: 320px;
+  border: 1px solid #F59E0B;
+  position: relative;
+  animation-name: battle-final-container;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+.battle-tada-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); }
+
+.battle-tada-name {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 22px;
+  margin: 0;
+  color: #F59E0B;
+  text-transform: uppercase; }
+
+.battle-tada-back {
+  position: absolute;
+  top: 50%;
+  left: 100%;
+  padding-left: 20px;
+  transform: translate(0, -50%); }
+
+.battle-button-back {
+  width: 225px;
+  border: 1px solid #F59E0B;
+  padding: 5px 0;
+  cursor: pointer;
+  background-color: transparent;
+  font-size: 24px;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center; }
+  .battle-button-back i {
+    margin-right: 15px; }
+
+.battle-tada-img {
+  width: 100%;
+  object-fit: cover; }
+
+.battle-last-cursor {
+  position: absolute;
+  top: 125px;
+  left: 50px; }
+  .battle-last-cursor.reversed {
+    transform: translate(150px, 0); }
+  .battle-last-cursor i {
+    font-size: 80px; }
+
+.battle-champion-out {
+  filter: grayscale(1);
+  opacity: 0.2 !important; }
+
+@keyframes battle-final-container {
+  0% {
+    transform: scale(0); }
+  100% {
+    transform: scale(1); } }
+
+.battle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; }
+
+.battle-hint {
+  font-size: 20px;
+  margin-bottom: 40px;
+  text-align: center; }
+
+.battle-or {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 60px; }
+
+.battle-background {
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #F59E0B;
+  opacity: 0;
+  transition: opacity 0.2s; }
+
+.battle-in {
+  animation-name: battle-in;
+  animation-duration: 1s;
+  animation-fill-mode: forwards; }
+
+@keyframes battle-in {
+  0% {
+    transform: scale(1); }
+  100% {
+    transform: scale(1.12); } }
+
+.battle-out {
+  animation-name: battle-out;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  animation-delay: 1.2s; }
+
+@keyframes battle-out {
+  0% {
+    transform: scale(1) translate(0, 0);
+    filter: grayscale(0); }
+  20% {
+    transform: scale(0.98) translate(5px, 0); }
+  40% {
+    transform: scale(0.96) translate(-5px, 0); }
+  60% {
+    transform: scale(0.94) translate(5px, 0); }
+  80% {
+    transform: scale(0.92) translate(-5px, 0); }
+  100% {
+    transform: scale(0.9) translate(0, 0);
+    filter: grayscale(1); } }
+
+.battle-fade {
+  animation-name: battle-fade;
+  animation-duration: 2s;
+  animation-fill-mode: forwards; }
+
+@keyframes battle-fade {
+  0% {
+    transform: scale(1);
+    opacity: 1; }
+  75% {
+    opacity: 0; }
+  100% {
+    transform: scale(0);
+    opacity: 0; } }
+
+.battle-fade-in {
+  animation-name: battle-fade-in;
+  animation-duration: 1.2s;
+  animation-fill-mode: forwards; }
+
+@keyframes battle-fade-in {
+  0% {
+    transform: scale(0);
+    opacity: 0; }
+  75% {
+    opacity: 1; }
+  100% {
+    transform: scale(1);
+    opacity: 1; } }
 
 .administrator-wrapper {
   background-color: #1E293B;
