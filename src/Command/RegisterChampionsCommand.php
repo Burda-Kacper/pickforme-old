@@ -4,7 +4,6 @@ namespace App\Command;
 
 use App\Entity\Champion;
 use App\Repository\ChampionRepository;
-use App\Repository\TagRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -25,24 +24,16 @@ class RegisterChampionsCommand extends Command
     private ChampionRepository $championRepository;
 
     /**
-     * @var TagRepository $tagRepository
-     */
-    private TagRepository $tagRepository;
-
-    /**
      * @param EntityManagerInterface $em
      * @param ChampionRepository $championRepository
-     * @param TagRepository $tagRepository
      */
     public function __construct(
         EntityManagerInterface $em,
-        ChampionRepository     $championRepository,
-        TagRepository          $tagRepository
+        ChampionRepository     $championRepository
     )
     {
         $this->em = $em;
         $this->championRepository = $championRepository;
-        $this->tagRepository = $tagRepository;
 
         parent::__construct();
     }
@@ -55,7 +46,8 @@ class RegisterChampionsCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $championData = json_decode(file_get_contents('https://ddragon.leagueoflegends.com/cdn/12.16.1/data/en_US/champion.json'));
+        $championData = json_decode(file_get_contents('https://ddragon.leagueoflegends.com/cdn/12.22.1/data/en_US/champion.json'));
+        $position = 1;
 
         foreach ($championData->data as $champion) {
             $championName = $champion->name;
@@ -67,9 +59,11 @@ class RegisterChampionsCommand extends Command
                 'championName' => $championName,
                 'championImageName' => $championImageName,
                 'resource' => $this->convertResource($champion->partype),
-                'tags' => [],
-                'attackRange' => $champion->stats->attackrange
+                'attackRange' => $champion->stats->attackrange,
+                'position' => $position
             ]);
+
+            $position++;
         }
 
         $this->em->flush();
@@ -113,7 +107,7 @@ class RegisterChampionsCommand extends Command
         }
 
         echo "\n[DOWNLOADING] Downloading square image for: " . $championImageName;
-        $championImageSquareSrc = 'https://ddragon.leagueoflegends.com/cdn/12.16.1/img/champion/' . $championImageName . '.png';
+        $championImageSquareSrc = 'https://ddragon.leagueoflegends.com/cdn/12.22.1/img/champion/' . $championImageName . '.png';
         copy($championImageSquareSrc, $championSquareImageSrc);
     }
 
@@ -139,10 +133,7 @@ class RegisterChampionsCommand extends Command
         $championEntity->setCodename($championData['championImageName']);
         $championEntity->setResource($championData['resource']);
         $championEntity->setAttackRange($championData['attackRange']);
-
-        foreach ($championData['tags'] as $tag) {
-            $championEntity->addTag($tag);
-        }
+        $championEntity->setPosition($championData['position']);
 
         $this->em->persist($championEntity);
     }

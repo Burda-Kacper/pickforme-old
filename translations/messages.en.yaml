@@ -38,9 +38,9 @@ tags:
     late: "Late game"
   damagesource:
     name: "Damage source"
-    attacks: "Attacks"
+    attacks: "Attacks / Physical"
     mixed: "Mixed"
-    spells: "Spells"
+    spells: "Spells / Magical"
   sustain:
     name: "Sustain"
     low: "Low"

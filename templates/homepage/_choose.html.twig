@@ -1,1 +1,39 @@
-<p>Choose placeholder</p>
+<div class="choose-loading hidden">
+    {{ 'choose.loading'|trans|raw }}
+</div>
+<div class="choose-result hidden">
+    <img class="choose-result-img" src="#"/>
+    <div class="choose-result-overlay">
+        <p class="choose-result-name"></p>
+    </div>
+    <div class="choose-result-back">
+        <button class="choose-button-back">
+            <i class="fa-solid fa-chevron-left"></i>
+        </button>
+    </div>
+</div>
+<div class="choose-wrapper">
+    <div class="choose-points-container">
+        {{ 'choose.hint'|trans|raw }}
+    </div>
+    {% for tagGroup in tagGroups %}
+        <div class="choose-group" data-id="{{ tagGroup.id }}">
+            <p class="choose-group-name">{{ ('tags.' ~ tagGroup.name ~ '.name')|trans|raw }}</p>
+            <div class="choose-tag-container">
+                {% for tag in tagGroup.tags %}
+                    <div class="choose-tag" data-cost="{{ tag.cost }}" data-id="{{ tag.id }}">
+                        <p class="choose-tag-name">{{ ('tags.' ~ tagGroup.name ~ "." ~ tag.name)|trans|raw }}</p>
+                        <p class="choose-tag-cost">({{ 'tags.cost'|trans|raw }}: {{ tag.cost }})</p>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+    <div class="choose-submit-container">
+        <button class="choose-submit">{{ 'choose.submit'|trans|raw }}</button>
+    </div>
+
+    <script>
+        initChooseConfig();
+    </script>
+</div>

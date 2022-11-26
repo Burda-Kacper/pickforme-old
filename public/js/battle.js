@@ -200,18 +200,28 @@ function initFinallyFinalFinish() {
     $(".battle-hint").addClass("battle-fade");
     $(".battle-last-container").addClass("battle-fade");
 
-    let championImage, championName;
+    let championImage, championName, championId;
 
     if ($(".battle-last-cursor").hasClass('reversed')) {
         championImage = $(".battle-last-container .battle-champion").eq(1).data('result');
         championName = $(".battle-last-container .battle-champion").eq(1).data('name');
+        championId = $(".battle-last-container .battle-champion").eq(1).data('id');
     } else {
         championImage = $(".battle-last-container .battle-champion").eq(0).data('result');
         championName = $(".battle-last-container .battle-champion").eq(0).data('name');
+        championId = $(".battle-last-container .battle-champion").eq(0).data('id');
     }
 
     $(".battle-tada-img").attr('src', championImage);
     $(".battle-tada-name").text(championName);
+
+    $.ajax({
+        url: battleLogPath,
+        method: "POST",
+        data: {
+            id: championId
+        }
+    });
 
     setTimeout(function () {
         $(".battle-last-container").addClass('hidden');

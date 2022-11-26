@@ -25,6 +25,9 @@ class Tag
     #[ORM\JoinColumn(nullable: false)]
     private $tagGroup;
 
+    #[ORM\Column(type: 'integer')]
+    private $cost;
+
     public function __construct()
     {
         $this->champions = new ArrayCollection();
@@ -82,6 +85,18 @@ class Tag
     public function setTagGroup(?TagGroup $tagGroup): self
     {
         $this->tagGroup = $tagGroup;
+
+        return $this;
+    }
+
+    public function getCost(): ?int
+    {
+        return $this->cost;
+    }
+
+    public function setCost(int $cost): self
+    {
+        $this->cost = $cost;
 
         return $this;
     }

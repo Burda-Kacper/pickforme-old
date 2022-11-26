@@ -30,6 +30,9 @@ class Champion
     #[ORM\Column(type: 'integer')]
     private $attackRange;
 
+    #[ORM\Column(type: 'integer')]
+    private $position;
+
     public function __construct()
     {
         $this->tags = new ArrayCollection();
@@ -108,6 +111,18 @@ class Champion
     public function setAttackRange(int $attackRange): self
     {
         $this->attackRange = $attackRange;
+
+        return $this;
+    }
+
+    public function getPosition(): ?int
+    {
+        return $this->position;
+    }
+
+    public function setPosition(int $position): self
+    {
+        $this->position = $position;
 
         return $this;
     }

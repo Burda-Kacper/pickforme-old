@@ -25,6 +25,15 @@
                             </button>
                         </div>
                     </div>
+                    <div class="homepage-author-container">
+                        <button class="homepage-author-button"><i class="fa-solid fa-info"></i></button>
+                    </div>
+                    {% if false %}
+                        <div class="homepage-language-container">
+                            <a href="{{ path('language_switch') }}"
+                               class="homepage-language">{{ "homepage.language.to-english"|trans|raw }}</a>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
             <div class="homepage-content hidden">
@@ -34,6 +43,17 @@
     </div>
     <div class="homepage-cache-random-images">
 
+    </div>
+    <div class="homepage-info-wrapper hidden">
+        <button class="homepage-info-close"><i class="fa-solid fa-circle-xmark"></i></button>
+        <div class="homepage-info-container">
+            <p class="homepage-info-notice">pickforme isn't endorsed by Riot Games and doesn't reflect the views or
+                opinions of Riot Games or anyone officially involved in producing or managing Riot Games properties.
+                Riot Games, and all associated properties are trademarks or registered trademarks of Riot Games,
+                Inc.</p>
+            <div class="homepage-info-bar"></div>
+            <div>{{ "homepage.info"|trans|raw }}</div>
+        </div>
     </div>
 {% endblock %}
 

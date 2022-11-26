@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Champion;
+use App\Entity\Tag;
 use App\Repository\ChampionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
@@ -14,7 +15,7 @@ class ChampionService
     private ChampionRepository $championRepo;
 
     /**
-     * @var EntityManagerInterface $em ;
+     * @var EntityManagerInterface $em
      */
     private EntityManagerInterface $em;
 
@@ -34,7 +35,7 @@ class ChampionService
     public function getAllChampions(): array
     {
         $champions = $this->championRepo->findBy([], [
-            'name' => "ASC"
+            'position' => "ASC"
         ]);
 
         $championsOutput = [];
@@ -43,7 +44,10 @@ class ChampionService
             $championsOutput[] = [
                 'id' => $champion->getId(),
                 'codename' => $champion->getCodename(),
-                'name' => $champion->getName()
+                'name' => $champion->getName(),
+                'tagIds' => array_map(function (Tag $tag) {
+                    return $tag->getId();
+                }, $champion->getTags()->toArray())
             ];
         }
 

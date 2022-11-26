@@ -6,6 +6,9 @@ homepage:
       battle: "Chcę otrzymać propozycje, z których wykluczę championy nieprzemawiające do mnie"
       random: "Chcę aby pickforme wylosowało dla mnie zupełnie dowolnego championa"
   choose: "Dokonaj wyboru:"
+  info: "Jezeli znalazłeś buga, chciałbyś zaproponować brakującą funkcję lub po prostu porozmawiać, zapraszam do kontaktu mailowego<br/><br/>dev@glitchless.pl"
+  language:
+    to-english: "Change your language to English"
 random:
   button:
     skip: "Pomiń animację"
@@ -16,6 +19,14 @@ battle:
   hint-last: "Czas na podjęcie decyzji :)"
   or: "lub"
   finish: "Powrót"
+choose:
+  hint: "Masz <span class='choose-points'></span> punktów do wydania.<br />Wybieraj mądrze cechy, na których najbardziej Ci zależy."
+  popup:
+    error: "Wystąpił błąd"
+    too-little-points: "Posiadasz za mało punktów aby wybrać tę opcję!"
+    select-all-groups: "Musisz wybrać cechę w każdej grupie!"
+  submit: "Wybierz dla mnie championa"
+  loading: "Daj nam chwilkę.<br />Wybieramy dla Ciebie idealnego championa!"
 administrator:
   champions:
     search: "Wyszukaj po nazwie"
@@ -39,9 +50,9 @@ tags:
     late: "Późna"
   damagesource:
     name: "Sposób zadawania obrażeń"
-    attacks: "Ataki"
+    attacks: "Ataki / Fizyczne"
     mixed: "Mieszany"
-    spells: "Zaklęcia"
+    spells: "Zaklęcia / Magiczne"
   sustain:
     name: "Sustain"
     low: "Niski"
@@ -79,3 +90,4 @@ tags:
     mid: "Środkowa aleja"
     bot: "Dolna aleja"
     sup: "Wsparcie"
+  cost: "Koszt"

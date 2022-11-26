@@ -3,6 +3,9 @@
 namespace App\Controller;
 
 use App\Service\ChampionService;
+use App\Service\ChooseService;
+use App\Service\PFMLogService;
+use App\Service\TagService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -16,11 +19,31 @@ class HomepageController extends AbstractController
     private ChampionService $championService;
 
     /**
-     * @param ChampionService $championService
+     * @var TagService $tagService
      */
-    public function __construct(ChampionService $championService)
+    private TagService $tagService;
+
+    /**
+     * @var ChooseService $chooseService
+     */
+    private ChooseService $chooseService;
+
+    /**
+     * @var PFMLogService $PFMLogService
+     */
+    private PFMLogService $PFMLogService;
+
+    /**
+     * @param ChampionService $championService
+     * @param TagService $tagService
+     * @param ChooseService $chooseService
+     */
+    public function __construct(ChampionService $championService, TagService $tagService, ChooseService $chooseService, PFMLogService $PFMLogService)
     {
         $this->championService = $championService;
+        $this->tagService = $tagService;
+        $this->chooseService = $chooseService;
+        $this->PFMLogService = $PFMLogService;
     }
 
     /**
@@ -71,9 +94,57 @@ class HomepageController extends AbstractController
      */
     public function pickChoose(Request $request): JsonResponse
     {
+        $tagGroups = $this->tagService->getTagGroupsForChoose();
+
         return new JsonResponse([
             'success' => true,
-            'view' => $this->renderView('homepage/_choose.html.twig')
+            'view' => $this->renderView('homepage/_choose.html.twig', [
+                'tagGroups' => $tagGroups
+            ])
         ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function chooseSubmit(Request $request): JsonResponse
+    {
+        $tags = $request->get("tags");
+        $champions = $this->championService->getAllChampions();
+        $champion = $this->chooseService->pickChooseChampion($champions, $tags);
+        $this->PFMLogService->createLog("choose", $champion['id'], implode(",", $tags));
+
+        return new JsonResponse([
+            'success' => true,
+            'champion' => $champion
+        ]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function logBattle(Request $request): JsonResponse
+    {
+        $championId = $request->get('id');
+        $this->PFMLogService->createLog("battle", (int)$championId);
+
+        return new JsonResponse(['success' => true]);
+    }
+
+    /**
+     * @param Request $request
+     *
+     * @return JsonResponse
+     */
+    public function logRandom(Request $request): JsonResponse
+    {
+        $championId = $request->get('id');
+        $this->PFMLogService->createLog("random", (int)$championId);
+
+        return new JsonResponse(['success' => true]);
     }
 }

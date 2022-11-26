@@ -172,3 +172,31 @@
     color: $background;
   }
 }
+
+@media screen and (max-width: 899px) {
+  .random-container {
+    width: 100%;
+  }
+
+  .random-wrapper {
+    padding: 10px;
+  }
+
+  .random-champion {
+    width: 25px;
+    height: 25px;
+  }
+
+  .random-result-image {
+    height: 115px;
+    width: 75px;
+    position: relative;
+    top: 4px;
+  }
+
+  .random-result-name {
+    left: 0;
+    font-size: 26px;
+    transform: translate(-15px, -50%);
+  }
+}

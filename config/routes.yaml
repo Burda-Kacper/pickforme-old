@@ -37,3 +37,17 @@ pick_battle:
   path: /pick_battle
   controller: App\Controller\HomepageController::pickBattle
   methods: POST
+
+choose_submit:
+  path: /choose-submit
+  controller: App\Controller\HomepageController::chooseSubmit
+  methods: POST
+
+log_battle:
+  path: /log-battle
+  controller: App\Controller\HomepageController::logBattle
+  methods: POST
+log_random:
+  path: /log-random
+  controller: App\Controller\HomepageController::logRandom
+  methods: POST

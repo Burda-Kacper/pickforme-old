@@ -101,6 +101,14 @@ function displayRandomResult() {
 
     $(".random-result-image").attr('src', $('.random-champion.active').data('result'));
     $(".random-result-name").text($('.random-champion.active').data('name'));
+
+    $.ajax({
+        url: randomLogPath,
+        method: "POST",
+        data: {
+            id: $('.random-champion.active').data('id')
+        }
+    });
 }
 
 $(".homepage-container").on('click', '.random-button-skip', function () {

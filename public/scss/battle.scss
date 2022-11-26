@@ -296,3 +296,35 @@
     opacity: 1;
   }
 }
+
+@media screen and (max-width: 719px) {
+  .battle-wrapper {
+    padding: 10px;
+  }
+
+  .battle-container {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  .battle-or {
+    margin: 25px 0;
+  }
+
+  .battle-final-container {
+    width: 100%;
+    height: auto;
+    max-width: 482px;
+  }
+
+  .battle-tada {
+    width: 260px;
+  }
+
+  .battle-tada-back {
+    left: -47px;
+    width: 36px;
+    height: 36px;
+  }
+}

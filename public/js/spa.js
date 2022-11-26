@@ -19,3 +19,11 @@ function slideOutHomepage() {
         $(".homepage-base").addClass("hidden");
     }, 1000);
 }
+
+$(".homepage-info-close").on('click', function () {
+    $(".homepage-info-wrapper").addClass("hidden");
+});
+
+$(".homepage-author-button").on('click', function () {
+    $(".homepage-info-wrapper").removeClass("hidden");
+});

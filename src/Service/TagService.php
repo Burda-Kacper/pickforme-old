@@ -62,4 +62,28 @@ class TagService
 
         return $output;
     }
+
+    /**
+     * @return array
+     */
+    public function getTagGroupsForChoose(): array
+    {
+        $tagGroups = $this->getAllTagGroups();
+        shuffle($tagGroups);
+        shuffle($tagGroups);
+        shuffle($tagGroups);
+        $chosenTagGroups = [];
+
+        foreach ($tagGroups as $tagGroup) {
+            if (!$tagGroup->getIsRole()) {
+                $chosenTagGroups[] = $tagGroup;
+            }
+
+            if (count($chosenTagGroups) >= 4) {
+                break;
+            }
+        }
+
+        return $chosenTagGroups;
+    }
 }
